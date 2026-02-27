@@ -183,7 +183,8 @@ pub fn toFullHexString(self: Color) FullHexString {
 /// #RRGGBB
 pub const HexString = [7]u8;
 pub fn toHexString(self: Color) HexString {
+    const color = self.to8Bit();
     var result: HexString = undefined;
-    _ = std.fmt.bufPrint(&result, "#{x:0>2}{x:0>2}{x:0>2}", .{ self.r, self.g, self.b }) catch unreachable;
+    _ = std.fmt.bufPrint(&result, "#{x:0>2}{x:0>2}{x:0>2}", .{ color.r, color.g, color.b }) catch unreachable;
     return result;
 }
